@@ -61,6 +61,9 @@ export class ImoveisService {
 
     async deleteById(id: number) {
         try {
+            await this.prisma.image.deleteMany({
+                where: { imovelId: id },
+            });
             return await this.prisma.imoveis.delete({
                 where: { id },
             });

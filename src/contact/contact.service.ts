@@ -20,5 +20,10 @@ export class ContactService {
     async count() {
         return this.prisma.contact.count();
     }
-}
 
+    async delete(id: number) {
+        return this.prisma.contact.delete({
+            where: { id },
+        });
+    }
+}

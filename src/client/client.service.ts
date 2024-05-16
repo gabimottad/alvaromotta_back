@@ -1,3 +1,4 @@
+// src/client/client.service.ts
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../database/PrismaService';
 import { ClientDTO } from './client.dto';
@@ -18,5 +19,11 @@ export class ClientService {
 
     async count() {
         return this.prisma.client.count();
+    }
+
+    async delete(id: number) {
+        return this.prisma.client.delete({
+            where: { id },
+        });
     }
 }
