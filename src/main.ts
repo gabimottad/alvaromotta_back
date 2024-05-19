@@ -19,6 +19,8 @@ async function bootstrap() {
     transform: true,
   }));
 
+  const APP_HOSTNAME = 'api-imobiliaria'; 
+
   app.enableCors({
     origin: 'http://localhost:8081',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -27,10 +29,9 @@ async function bootstrap() {
 
   app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
-
   const PORT = process.env.PORT || 3005;
   await app.listen(PORT);
-  console.log(`Server running on https://localhost:${PORT}`);
+  console.log(`Server running on https://${APP_HOSTNAME}:${PORT}`);
 }
 
 bootstrap();
