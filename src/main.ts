@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import express from 'express';
+import path from 'path';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,6 +14,8 @@ async function bootstrap() {
   }));
 
   app.enableCors();
+  app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
+
 
   const PORT = process.env.PORT || 3005;
   await app.listen(PORT);
