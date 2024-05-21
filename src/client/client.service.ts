@@ -1,4 +1,3 @@
-// src/client/client.service.ts
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../database/PrismaService';
 import { ClientDTO } from './client.dto';
@@ -24,6 +23,13 @@ export class ClientService {
     async delete(id: number) {
         return this.prisma.client.delete({
             where: { id },
+        });
+    }
+
+    async update(id: number, updateClientDto: ClientDTO) {
+        return this.prisma.client.update({
+            where: { id },
+            data: updateClientDto,
         });
     }
 }

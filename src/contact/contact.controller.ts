@@ -1,5 +1,4 @@
-// src/contact/contact.controller.ts
-import { Controller, Post, Body, Get, UseGuards, Delete, Param } from '@nestjs/common';
+import { Controller, Post, Body, Get, UseGuards, Delete, Param, Put } from '@nestjs/common';
 import { ContactService } from './contact.service';
 import { ContactDTO } from './create-contact.dto';
 import { JwtAuthGuard } from 'src/auth/guard/jwt-auth.guard';
@@ -29,5 +28,11 @@ export class ContactController {
     @UseGuards(JwtAuthGuard)
     delete(@Param('id') id: string) {
         return this.contactService.delete(Number(id));
+    }
+
+    @Put(':id')
+    @UseGuards(JwtAuthGuard)
+    update(@Param('id') id: string, @Body() updateContactDto: ContactDTO) {
+        return this.contactService.update(Number(id), updateContactDto);
     }
 }

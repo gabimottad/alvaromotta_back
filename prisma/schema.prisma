@@ -23,6 +23,8 @@ model Contact {
   telephone String
   message   String
   type      String
+  type1     String?
+  type2     String?
   createdAt DateTime @default(now())
 }
 
@@ -32,6 +34,8 @@ model Client {
   telephone String
   message   String
   type      String
+  type1     String?
+  type2     String?
   createdAt DateTime @default(now())
 }
 

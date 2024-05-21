@@ -1,4 +1,3 @@
-// src/contact/contact.service.ts
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../database/PrismaService';
 import { ContactDTO } from './create-contact.dto';
@@ -24,6 +23,13 @@ export class ContactService {
     async delete(id: number) {
         return this.prisma.contact.delete({
             where: { id },
+        });
+    }
+
+    async update(id: number, updateContactDto: ContactDTO) {
+        return this.prisma.contact.update({
+            where: { id },
+            data: updateContactDto,
         });
     }
 }
