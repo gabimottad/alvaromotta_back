@@ -34,4 +34,9 @@ export class ImageService {
             throw new NotFoundException(`Image with ID ${id} not found`);
         }
     }
+    async deleteImagesByImovelId(imovelId: number) {
+        await this.prisma.image.deleteMany({
+            where: { imovelId }
+        });
+    }
 }
