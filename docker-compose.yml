@@ -1,0 +1,26 @@
+services:
+  alvaro:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URL=postgresql://alvaro:alvaro@db:5432/alvaro?schema=public
+    depends_on:
+      - db
+    command: ["npm", "run", "start:prod"]
+
+  db:
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=alvaro
+      - POSTGRES_PASSWORD=alvaro
+      - POSTGRES_DB=alvaro
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+volumes:
+  pgdata:

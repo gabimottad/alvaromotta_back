@@ -17,9 +17,9 @@ async function bootstrap() {
   app.enableCors();
 
   app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
-
-  const PORT = process.env.PORT || 3005;
-  await app.listen(PORT);
+  
+  const PORT = process.env.PORT || 3001;
+  await app.listen(PORT, '0.0.0.0');
   console.log(`Server running on http://localhost:${PORT}`);
 }
 
