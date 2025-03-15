@@ -14,9 +14,6 @@ async function bootstrap() {
     transform: true,
   }));
 
-  app.enableCors({
-  });
-
   app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
   
   const PORT = process.env.PORT || 3001;
