@@ -15,10 +15,6 @@ async function bootstrap() {
   }));
 
   app.enableCors({
-    origin: ['http://localhost:8081', 'http://localhost:8080', 'https://alvaromottaimoveis.com'],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    credentials: true,
-    allowedHeaders: 'Content-Type, Accept, Authorization',
   });
 
   app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
