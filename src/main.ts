@@ -14,6 +14,13 @@ async function bootstrap() {
     transform: true,
   }));
 
+  app.enableCors({
+    origin: ['http://localhost:8080', 'https://alvaromottaimoveis.com'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  });
+
   app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
   
   const PORT = process.env.PORT || 3001;
@@ -22,4 +29,3 @@ async function bootstrap() {
 }
 
 bootstrap();
-
